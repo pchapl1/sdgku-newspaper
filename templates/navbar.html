@@ -18,11 +18,29 @@
                 <a class="nav-link" href="{% url 'about' %}">About us</a>
             </li>
             <li class="nav-item active px-4">
-                <a class="nav-link" href="">register</a>
+                <a class="nav-link" href="{% url 'signup' %}">sign up</a>
             </li>
+
+            {% if user.is_authenticated %}
+
             <li class="nav-item active px-4">
-                <a class="nav-link" href="">placeholder</a>
+                <a class="nav-link" href="{% url 'password_change' %}">Change Password</a>
+            </li>          
+            <li class="nav-item active px-4">
+                <a class="nav-link" href="{% url 'new_article' %}">Add article</a>
+            </li>      
+            <li class="nav-item active px-4">
+                <a class="nav-link" href="{% url 'new_article' %}">all articles</a>
+            </li> 
+            <li class="nav-item px-4">
+                <a class="nav-link" href="{% url 'logout' %}">Log out</a>
             </li>
+            {% endif %}
+            {% if not user.is_authenticated %}
+            <li class="nav-item active px-4">
+                <a class="nav-link" href="{% url 'login' %}">Log in</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

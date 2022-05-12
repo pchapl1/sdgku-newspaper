@@ -20,9 +20,29 @@
                     up all the news in our own words in ways that may not make sense to you but who cares, no one really fact checks anything anymore 
                     anyway
                 </p>
-                <a class="btn btn-secondary" href="">see more...</a>
             </div>
+            {% for article in articles %}
+            <div class="card">
+              <div class="card-header">
+                  <h5>{{ article.section }}</h1>
+              </div>
+              <div class="card-body">
+                  <h3 class="card-title">{{ article.title }}</h3>
+                  <p class="card-text">{{ article.body }}
+                  </p>
+              </div>
+              <div class="btn-group">
+                <a href="{% url 'article_detail' article.pk %}"  class="btn btn-primary">view article</a>
 
+                {% if user.is_authenticated %}
+                <a href="{% url 'update_article' article.pk %}"  class="btn btn-primary">edit article</a>
+                <a href="{% url 'del_article' article.pk %}"  class="btn btn-danger">delete article</a>
+              </div>
+              {% endif %}
+       
+              <div class="card-footer">
+                by {{ article.author }} on {{ article.created_on }}</div>
+            {% endfor %}
         </div>
       </div>
     </div>
