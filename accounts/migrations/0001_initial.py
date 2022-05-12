@@ -31,4 +31,5 @@ class Migration(migrations.Migration):
                 ('description', models.TextField()),
             ],
         ),
+        migrations.RunPython(populate_usertype)
     ]

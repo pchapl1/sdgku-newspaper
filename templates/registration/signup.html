@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+  login
+{% endblock title %}
+
+{% block content %}
+  <div class="card">
+      <div class="card-header">
+          <h5>login</h5>
+      </div>
+      <div class="card-body">
+          {{ form.as_p }}
+      </div>
+  </div>
+{% endblock content %}
